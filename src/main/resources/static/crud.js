@@ -12,10 +12,10 @@ $(document).ready(function () {
         })
             .done(function (user) {
                 dlg.find('#editid').val(user.id);
-                dlg.find('#editusername').val(user.username);
+                dlg.find('#editusername').val(user.firstname);
                 dlg.find('#editlastname').val(user.surname);
                 dlg.find('#editage').val(user.age);
-                dlg.find('#editemail').val(user.email);
+                dlg.find('#editemail').val(user.name);
                 dlg.find('#editpassword').val(user.password);
 
                 dlg.find('#roleSet option').each(function (role) {
@@ -43,10 +43,10 @@ $(document).ready(function () {
             dataType: 'json',
             data: {
                 "id": dlg.find('#editid').val(),
-                "name": dlg.find('#editusername').val(),
+                "firstname": dlg.find('#editusername').val(),
                 "surname": dlg.find('#editlastname').val(),
                 "age": dlg.find('#editage').val(),
-                "email": dlg.find('#editemail').val(),
+                "name": dlg.find('#editemail').val(),
                 "password": dlg.find('#editpassword').val(),
 
                 "roleSet": dlg.find('#roleSet').val().toString()
@@ -59,7 +59,7 @@ $(document).ready(function () {
                     switch (i) {
 
                         case 1: {
-                            td.text(user.username);
+                            td.text(user.firstname);
                             break;
                         }
                         case 2: {
@@ -71,7 +71,7 @@ $(document).ready(function () {
                             break;
                         }
                         case 4: {
-                            td.text(user.email);
+                            td.text(user.name);
                             break;
                         }
                         case 5: {
@@ -102,10 +102,10 @@ $(document).ready(function () {
         })
             .done(function (user) {
                 dlg.find('#deleteid').val(user.id);
-                dlg.find('#deleteusername').val(user.username);
+                dlg.find('#deleteusername').val(user.firstname);
                 dlg.find('#deletelastname').val(user.surname);
                 dlg.find('#deleteage').val(user.age);
-                dlg.find('#deleteemail').val(user.email);
+                dlg.find('#deleteemail').val(user.name);
                 dlg.find('#deletepassword').val(user.password);
                 dlg.find('#deleteroleSet option').each(function (role) {
                     var option = $(this);
@@ -148,10 +148,10 @@ $(document).ready(function () {
             dataType: 'json',
             data: {
                 "id": card.find('#addid').val(),
-                "name": card.find('#addusername').val(),
+                "firstname": card.find('#addusername').val(),
                 "surname": card.find('#addlastname').val(),
                 "age": card.find('#addage').val(),
-                "email": card.find('#addemail').val(),
+                "name": card.find('#addemail').val(),
                 "password": card.find('#addpassword').val(),
                 "roleSet": card.find('#addroles').val().toString()
             }
@@ -164,10 +164,10 @@ $(document).ready(function () {
                 }
                 $('<tr>' +
                     '<td scope="row">' + user.id + '</td>' +
-                    '<td>' + user.username + '</td>' +
+                    '<td>' + user.firstname + '</td>' +
                     '<td>' + user.surname + '</td>' +
                     '<td>' + user.age + '</td>' +
-                    '<td>' + user.email + '</td>' +
+                    '<td>' + user.name + '</td>' +
                     '<td>' + roleStr + '</td>' +
                     '<td>' +
                     '   <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#editUserDlg" data-id="' + user.id + '" role="button">Edit</a>' +

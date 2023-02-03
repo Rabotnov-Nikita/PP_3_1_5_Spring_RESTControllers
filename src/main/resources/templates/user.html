@@ -68,7 +68,7 @@
                     <td th:text="${authUser.getUsername()}">First Name</td>
                     <td th:text="${authUser.getSurname()}">Last Name</td>
                     <td th:text="${authUser.age}">Age</td>
-                    <td th:text="${authUser.email}">Email</td>
+                    <td th:text="${authUser.name}">Email</td>
                     <td class="list-group list-group-horizontal">
                                             <span class="mr-2" th:each="roles: ${authUser.getRoleSet()}"
                                                   th:text="${roles.getAuthority()}"></span>
