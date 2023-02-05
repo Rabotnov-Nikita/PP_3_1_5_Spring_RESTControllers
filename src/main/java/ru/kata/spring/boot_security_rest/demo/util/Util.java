@@ -1,6 +1,7 @@
 package ru.kata.spring.boot_security_rest.demo.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import ru.kata.spring.boot_security_rest.demo.model.Role;
@@ -15,6 +16,7 @@ import java.util.Set;
 public class Util {
 
     @Autowired
+    @Lazy
     ServiceUser serviceUser;
 
     @Autowired
@@ -27,7 +29,7 @@ public class Util {
         roleSet.add(serviceRole.saveRole(new Role("ROLE_USER")));
         roleSet.add(serviceRole.saveRole(new Role("ROLE_ADMIN")));
         //password: password
-        serviceUser.createUser(new User(1L, "admin", "adminov", "$2a$12$uldC7GclBLFrPxToan7IdehSYxtw6PfgeL/Q5a6x346ekNc9hC98G", 1, "admin@mail.com" ,roleSet));
-        serviceUser.createUser(new User(2L, "user", "userov", "$2a$12$uldC7GclBLFrPxToan7IdehSYxtw6PfgeL/Q5a6x346ekNc9hC98G", 1, "user@mail.com" ,roleSet));
+        serviceUser.createUser(new User(1L, "admin", "adminov", "admin", 1, "admin@mail.ru" ,roleSet));
+        serviceUser.createUser(new User(2L, "user", "userov", "user", 1, "user@mail.ru" ,roleSet));
     }
 }

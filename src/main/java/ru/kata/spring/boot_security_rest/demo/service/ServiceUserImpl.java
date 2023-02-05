@@ -1,6 +1,6 @@
 package ru.kata.spring.boot_security_rest.demo.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.kata.spring.boot_security_rest.demo.dao.UserRepository;
 import ru.kata.spring.boot_security_rest.demo.model.User;
@@ -10,8 +10,16 @@ import java.util.Optional;
 
 @Service
 public class ServiceUserImpl implements ServiceUser {
-    @Autowired
-    private UserRepository userRepository;
+
+
+    private final UserRepository userRepository;
+
+    private final PasswordEncoder passwordEncoder;
+
+    public ServiceUserImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Override
     public Optional<User> findById(Long id) {
@@ -30,6 +38,7 @@ public class ServiceUserImpl implements ServiceUser {
 
     @Override
     public User createUser(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 
@@ -40,6 +49,13 @@ public class ServiceUserImpl implements ServiceUser {
 
     @Override
     public User updateUser(User user) {
-        return userRepository.save(user);
+        User updatedUser = userRepository.findById(user.getId()).get();
+        if (!user.getFirstname().equals("")) updatedUser.setFirstname(user.getFirstname());
+        if (!user.getSurname().equals("")) updatedUser.setSurname(user.getSurname());
+        if (user.getAge() != null) updatedUser.setAge(user.getAge());
+        if (!user.getName().equals("")) updatedUser.setName(user.getName());
+        if (!user.getPassword().equals("")) updatedUser.setPassword(passwordEncoder.encode(user.getPassword()));
+        if (!user.getRoleSet().isEmpty()) updatedUser.setRoleSet(user.getRoleSet());
+        return userRepository.save(updatedUser);
     }
 }

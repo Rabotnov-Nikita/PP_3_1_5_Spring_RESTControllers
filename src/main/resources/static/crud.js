@@ -16,7 +16,7 @@ $(document).ready(function () {
                 dlg.find('#editlastname').val(user.surname);
                 dlg.find('#editage').val(user.age);
                 dlg.find('#editemail').val(user.name);
-                dlg.find('#editpassword').val(user.password);
+                dlg.find('#editpassword').val();
 
                 dlg.find('#roleSet option').each(function (role) {
                     var option = $(this);
@@ -106,7 +106,7 @@ $(document).ready(function () {
                 dlg.find('#deletelastname').val(user.surname);
                 dlg.find('#deleteage').val(user.age);
                 dlg.find('#deleteemail').val(user.name);
-                dlg.find('#deletepassword').val(user.password);
+                dlg.find('#deletepassword').val();
                 dlg.find('#deleteroleSet option').each(function (role) {
                     var option = $(this);
                     var role_id = parseInt(option.attr('value'));

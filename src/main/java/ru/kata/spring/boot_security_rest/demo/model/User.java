@@ -20,7 +20,7 @@ public class User implements UserDetails {
 
     private String password;
 
-    private int age;
+    private Integer age;
 
     @Column(name = "Email")
     private String name;
@@ -66,7 +66,7 @@ public class User implements UserDetails {
         this.roleSet = (Set<Role>) authorities;
     }
 
-    public User(Long id, String firstname, String surname, String password, int age, String name, Set<Role> roleSet) {
+    public User(Long id, String firstname, String surname, String password, Integer age, String name, Set<Role> roleSet) {
         this.id = id;
         this.firstname = firstname;
         this.surname = surname;
@@ -76,7 +76,7 @@ public class User implements UserDetails {
         this.roleSet = roleSet;
     }
 
-    public User(Long id, String firstname, String surname, String password, int age, String name, Collection<? extends GrantedAuthority> authorities) {
+    public User(Long id, String firstname, String surname, String password, Integer age, String name, Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
         this.firstname = firstname;
         this.surname = surname;
@@ -132,7 +132,7 @@ public class User implements UserDetails {
         this.password = password;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
@@ -184,6 +184,6 @@ public class User implements UserDetails {
             }
             s.append(r.getRole());
         }
-        return s.toString();
+        return String.valueOf(s);
     }
 }

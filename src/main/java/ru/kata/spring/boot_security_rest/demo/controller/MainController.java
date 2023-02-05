@@ -15,13 +15,13 @@ import ru.kata.spring.boot_security_rest.demo.service.ServiceUser;
 import java.util.Set;
 
 @Controller
-public class UserMainController {
+public class MainController {
     @Autowired
     private final ServiceRole roleService;
     @Autowired
     private final ServiceUser userService;
 
-    public UserMainController(ServiceRole roleService, ServiceUser userService) {
+    public MainController(ServiceRole roleService, ServiceUser userService) {
         this.roleService = roleService;
         this.userService = userService;
     }
@@ -34,7 +34,7 @@ public class UserMainController {
     @GetMapping("/admin")
     public String getAdmin(Model model, @AuthenticationPrincipal User authUser) {
         model.addAttribute("users", userService.allUsers());
-        model.addAttribute("authUser", authUser);
+        model.addAttribute("authUser", userService.findByName(authUser.getName()).get());
         model.addAttribute("roles", roleService.findAll());
         return "admin";
     }

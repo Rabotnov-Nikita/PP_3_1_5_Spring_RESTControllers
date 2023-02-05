@@ -1,6 +1,8 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
@@ -18,8 +20,7 @@
     <span class="navbar-brand mr-0" sec:authentication="name"></span>
     <span class="navbar-brand mr-0" th:text="${authUser.name}"></span>
     <span class="navbar-text text-light">with roles: </span>
-    <span class="navbar-text text-lg-right text-light" th:each="authority : ${authUser.getAuthorities()}"
-          th:text="${authority.getAuthority()} "></span>
+    <span class="navbar-text text-lg-right text-light" th:text="${authUser.getRoleSetString()}"></span>
   </div>
   <div class="collapse navbar-collapse" id="navbarToggler">
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
@@ -232,7 +233,7 @@
 
           <div class="form-group">
             <label for="editpassword">Password</label>
-            <input class="form-control" id="editpassword" name="password"
+            <input class="form-control" id="editpassword" name="password" placeholder="Password"
                    type="password">
           </div>
           <div class="form-group">

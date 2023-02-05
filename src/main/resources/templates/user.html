@@ -17,6 +17,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark pb-2 bg-dark">
   <div class="col-11 pr-1 mr-2">
+    <span class="navbar-brand mr-0" th:text="${authUser.name}"></span>
     <span class="navbar-text text-light">with roles: </span>
     <span class="navbar-text text-lg-right text-light" th:each="authority : ${authUser.getAuthorities()}"
           th:text="${authority.getAuthority()}"></span>
@@ -29,22 +30,22 @@
   <div class="row flex-row">
     <div class="col-3">
       <!-- List group -->
-      <div class="list-group list-group-flush" id="myUserList" role="tablist">
-        <a class="list-group-item list-group-item-action" data-toggle="list" href="#profile"
+      <div class="list-group" id="myUserList" role="tablist">
+        <a class="list-group-item list-group-item-action active" data-toggle="list" href="#profile"
            role="tab">User</a>
       </div>
     </div>
     <div class="col-9">
       <!-- Tab panes -->
       <div class="tab-content">
-        <div class="tab-pane " id="profile" role="tabpanel">
-          <div class="card ">
+        <div class="tab-pane active" id="profile" role="tabpanel">
+          <div class="card">
             <div class="card-header">
               <div class="text-xl-left">
                 <h1>User information-page</h1>
               </div>
             </div>
-            <div class="card ">
+            <div class="card">
               <div class="card-header">
                 <div class="text-xl-left">
                   <h5>About user: <span th:text="${authUser.username}"></span></h5>
