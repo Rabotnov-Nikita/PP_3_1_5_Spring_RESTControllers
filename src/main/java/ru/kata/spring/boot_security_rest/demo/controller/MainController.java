@@ -31,13 +31,13 @@ public class MainController {
         return "login";
     }
 
-    @GetMapping("/admin")
-    public String getAdmin(Model model, @AuthenticationPrincipal User authUser) {
-        model.addAttribute("users", userService.allUsers());
-        model.addAttribute("authUser", userService.findByName(authUser.getName()).get());
-        model.addAttribute("roles", roleService.findAll());
-        return "admin";
-    }
+//    @GetMapping("/admin")
+//    public String getAdmin(Model model, @AuthenticationPrincipal User authUser) {
+//        model.addAttribute("users", userService.allUsers());
+//        model.addAttribute("authUser", userService.findByName(authUser.getName()).get());
+//        model.addAttribute("roles", roleService.findAll());
+//        return "admin";
+//    }
 
     @GetMapping("/user")
     public String getUser(Model userModel, @AuthenticationPrincipal User authUser) {
